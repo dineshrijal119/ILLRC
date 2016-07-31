@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Najir</string>
+    <string name="header">Institute of Legal Information and Research Center</string>
+    <string name="openDrawer">open</string>
+    <string name="closeDrawer">close</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+</resources>

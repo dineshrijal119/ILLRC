@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+    <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="0.6"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:textSize="18dp"
+        android:textColor="@android:color/black"
+        android:text=" प्रकाशन :"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/publisher"
+        android:layout_marginLeft="3dp"
+        android:layout_weight="1.4"
+        style="@style/EditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+        android:hint="प्रकाशन"
+        android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="अदालत :"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1.4"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+            android:hint="अदालत"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:textSize="18dp"
+            android:text="इजालश :"
+            android:textColor="@android:color/black"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1.4"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+            android:hint="इजालश"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:textSize="18dp"
+            android:text="दर्ता न. :"
+            android:textColor="@android:color/black"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1.4"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+            android:hint="दर्ता न"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:textSize="18dp"
+            android:layout_height="42dp"
+            android:textColor="@android:color/black"
+            android:text="पक्ष/बिपक्ष:"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1.4"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+            android:hint="पक्ष/बिपक्ष"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:text="निर्नये न :"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1.4"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+            android:hint="निर्नये न"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:text="निर्नये मिती:"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1.4"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+            android:hint="निर्नये मिती"
+            android:inputType="textPassword" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:textSize="18dp"
+            android:text="कानुन बेयाबसही. :"
+            android:textColor="@android:color/black"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1.4"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+            android:hint="कानुन बेयाबसही"
+            android:inputType="text" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="18dp"
+                android:textColor="@android:color/black"
+                android:text="निर्नये मिती:"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                android:layout_weight="1.4"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="निर्नये मिती"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="18dp"
+                android:text="कानुन बेयाबसही. :"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                android:layout_weight="1.4"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="कानुन बेयाबसही"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="18dp"
+                android:textColor="@android:color/black"
+                android:text="निर्नये मिती:"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                android:layout_weight="1.4"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="निर्नये मिती"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="18dp"
+                android:text="कानुन बेयाबसही. :"
+                android:textColor="@android:color/black"
+                android:inputType="text" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                android:layout_weight="1.4"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="कानुन बेयाबसही"
+                android:inputType="text" />
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

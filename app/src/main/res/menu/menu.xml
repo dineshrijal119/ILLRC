@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_first_fragment"
+            android:icon="@drawable/ic_action_home_page"
+            android:title="Search" />
+        <item
+            android:id="@+id/nav_second_fragment"
+            android:icon="@drawable/ic_action_about_us"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_third_fragment"
+            android:icon="@drawable/ic_action_logout"
+            android:title="Log out" />
+    </group>
+</menu>
