@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:background="@drawable/law"
+        android:gravity="center">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="Institute of Legal Information and Research  Center Pvt. Ltd."
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:orientation="vertical"
+        android:weightSum="1.2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/najir_nepali"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#3c616161"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/okil" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="नजीर(Nepali)"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#6e6d6d" />
+
+            <LinearLayout
+                android:id="@+id/najir_english"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#3c616161"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/okil" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="नजीर(English)"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#6e6d6d" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/kanun_nepali"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#3c616161"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/gazat" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="कानून(Nepali)"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#6e6d6d" />
+
+            <LinearLayout
+                android:id="@+id/kanun_english"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#3c616161"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/gazat" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="कानून(English)"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#6e6d6d" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/gazat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#3c616161"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/law_100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="राजपत्र"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#6e6d6d" />
+
+            <LinearLayout
+                android:id="@+id/about_us"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#3c616161"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:tint="@color/colorPrimary"
+                    android:id="@+id/my_appcompat_imageview"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_action_about_us"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="हाम्रो बारेमा  "
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

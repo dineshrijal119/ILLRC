@@ -1,17 +1,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group >
+    <group android:id="@+id/ck">
         <item
             android:id="@+id/nav_first_fragment"
-            android:icon="@drawable/ic_action_home_page"
-            android:title="Search" />
+            android:icon="@drawable/najir"
+            android:title="नजिर (English)"/></group>
+    <group android:id="@+id/cks">
         <item
             android:id="@+id/nav_second_fragment"
-            android:icon="@drawable/ic_action_about_us"
-            android:title="About Us" />
+            android:icon="@drawable/kanun"
+            android:title="नजिर (Nepali)"/></group>
+    <group android:id="@+id/kanun">
+        <item
+            android:icon="@drawable/kanun_main"
+            android:title="कानुन " /></group>
+    <group android:id="@+id/gazet">
         <item
             android:id="@+id/nav_third_fragment"
-            android:icon="@drawable/ic_action_logout"
-            android:title="Log out" />
+            android:icon="@drawable/gazat"
+            android:title="गजेट " /></group>
+
+    <group android:id="@+id/us">
+        <item
+            android:id="@+id/about_us"
+            android:icon="@drawable/ic_action_about_us"
+            android:title="हाम्रो बारेमा  " /></group>
+    <group android:id="@+id/samprk">
+        <item
+            android:id="@+id/contact_us"
+            android:icon="@drawable/ic_action_phone_numbers"
+            android:title="सम्पर्क" /></group>
     </group>
 </menu>

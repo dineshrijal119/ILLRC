@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="16dp"
+                android:textColor="@android:color/black"
+                android:text="Publication:"
+                android:inputType="textEmailAddress" />
+
+            <Spinner
+                android:layout_weight="1.4"
+                android:id="@+id/publication"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:spinnerMode="dropdown"
+
+                />
+            <!--
+                            <EditText
+                                android:id="@+id/publisher"
+                                android:layout_marginLeft="3dp"
+                                android:layout_weight="1.4"
+                                style="@style/EditTextStyle"
+                                android:layout_width="0dp"
+                                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                                android:hint="publication"
+                                android:inputType="text" />-->
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:text="Court:"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:inputType="textEmailAddress" />
+
+            <Spinner
+                android:layout_weight="1.4"
+                android:id="@+id/court"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:spinnerMode="dropdown"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="16dp"
+                android:text="Month:"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+
+            <Spinner
+                android:layout_weight="1.4"
+                android:id="@+id/month"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:spinnerMode="dropdown"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="16dp"
+                android:text="Public year:"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+
+            <Spinner
+                android:layout_weight="1.4"
+                android:id="@+id/publicyear"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:spinnerMode="dropdown"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="16dp"
+                android:text="Words:"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+            <Spinner
+                android:layout_weight="1.4"
+                android:id="@+id/sabdaanusar"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:spinnerMode="dropdown"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="16dp"
+                android:text="Category:"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+            <Spinner
+                android:layout_weight="1.4"
+                android:id="@+id/categorry"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:spinnerMode="dropdown"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="16dp"
+                android:text="peg no:"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                style="@style/EditTextStyle"
+                android:layout_width="250dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="beanch"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="16dp"
+                android:text="Reg. no :"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                style="@style/EditTextStyle"
+                android:layout_width="250dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="Registration No"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:textSize="14dp"
+                android:layout_height="42dp"
+                android:textColor="@android:color/black"
+                android:text="Plaintif/Defandent:"
+                android:inputType="text" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                style="@style/EditTextStyle"
+                android:layout_width="250dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="Plaintif / Defandent"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:text="Subject:"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                style="@style/EditTextStyle"
+                android:layout_width="250dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="Case No"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="18dp"
+                android:text="Lawyer:"
+                android:textColor="@android:color/black"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_marginLeft="3dp"
+                style="@style/EditTextStyle"
+                android:layout_width="250dp"
+                android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                android:hint="Lawyer"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:weightSum="2"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:textSize="18dp"
+                android:text="Search"
+                android:textColor="@android:color/white"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:weightSum="2"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+    <!--</ScrollView>-->

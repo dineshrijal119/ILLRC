@@ -1,0 +1,68 @@
+<android.support.v7.widget.CardView
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    app:cardCornerRadius="@dimen/activity_vertical_margin"
+    app:cardElevation="@dimen/activity_vertical_margin"
+    android:background="@drawable/selected_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:weightSum="6">
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/nirnayeno"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="पेज" />
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/pub_year"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="बर्ष" />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/month"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text=" महिना " />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/peg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="पेज" />
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/supprtdef"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="बिषय" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

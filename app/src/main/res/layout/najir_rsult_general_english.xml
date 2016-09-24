@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/custum_toolbar_searchresult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/publication"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:textColor="@android:color/black"
+            android:text="Publication " />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/pub_year"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Year" />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/month"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text=" Month " />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/peg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="peg" />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/supprtdef"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="subject" />
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        />
+</LinearLayout>

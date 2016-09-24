@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/custum_toolbar_details" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+           <!-- <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="date:" />
+
+                    <TextView
+                        android:id="@+id/Miti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="२०४८।०८।२९"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#939393" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="दर्ता न. " />
+
+                    <TextView
+                        android:id="@+id/RegisterId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="2dp"
+                        android:text="वत् २०४६ सालको दे.पु.नं. ४३७"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#939393" />-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bench :"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/ijlash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="संयुक्त इजलास"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lawyer:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/Judge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="माननीय न्यायाधीश श्री हरगोविन्द सिंह प्रधान, माननीय न्यायाधीश श्री केदारनाथ उपाध्याय"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Punarbedak:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/Purnawedan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="पुनरावेदक/प्रतिवादी : जि. रौतहट गौर गा.वि.स.वा.न.२ बस्ने चन्द्रसिंह राजपुत ।"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Partyth:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/Partyashi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="प्रत्यर्थी/वादी : ऐ ऐ बस्ने शिदेवी राजपुतनी, ऐ ऐ बस्ने नागेन्द्रसिंह प्रधान ।"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Punarabedak tarfa:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/PurnawedanTarf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="पुनरावेदक/प्रतिवादी तर्फबाट : विद्वान अधिवक्ता श्री कमलनारायण दास "
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="partyathi badi tarfa:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/partyashiTarf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="प्रत्यर्थी वादी तर्फबाट : विद्वान अधिवक्ता श्री गोविन्दकुमार उपाध्याय"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Special:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/AttravtiveSubject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="चन्द्र सिंह राजपुत विरुद्ध शिवदेवी राजपुतजनी समेत"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Details:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="चन्द्र सिंह राजपुत विरुद्ध शिवदेवी राजपुतजनी समेत"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

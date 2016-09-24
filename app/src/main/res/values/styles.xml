@@ -10,8 +10,8 @@
     </style>
     <style name="AppThemeRegister" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryRegister</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryRegister</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="EditTextStyle">
@@ -21,4 +21,11 @@
     <item name="android:textSize">15sp</item>
     <item name="android:padding">10dp</item>
     <item name="android:textColorHint">#9A9A9A</item></style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="menu_iteam" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/about_item_text_size</item>
+    </style>
+
+    <dimen name="about_item_text_size">14dp</dimen>
 </resources>

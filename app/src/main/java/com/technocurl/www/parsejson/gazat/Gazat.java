@@ -1,0 +1,271 @@
+package com.technocurl.www.parsejson.gazat;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.technocurl.www.parsejson.HttpUrlConnectionJson;
+import com.technocurl.www.parsejson.R;
+import com.technocurl.www.parsejson.ServiceHandler;
+import com.technocurl.www.parsejson.SpinnerAdapter;
+import com.technocurl.www.parsejson.custumclasses.Progressillrc;
+import com.technocurl.www.parsejson.databases.IllrcDatabases;
+import com.technocurl.www.parsejson.model.NajirNepalimodel;
+import com.technocurl.www.parsejson.nepali.DetailsrowlistActivity;
+import com.technocurl.www.parsejson.utility.Constants;
+import com.technocurl.www.parsejson.utility.Tags;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
+/**
+ * Created by dinesh on 8/3/16.
+ */
+public class Gazat extends AppCompatActivity implements View.OnClickListener {
+    Toolbar toolbar;
+    Button search_gazet;
+    String bargikaran_mantralagat, bargikaran_bisayegat, month, atirikta_sankhya, barsa;
+    EditText pub_year;
+    IllrcDatabases databases;
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.general_search);
+        databases= new IllrcDatabases(this);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        setTitle("राजपत्र");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        search_gazet = (Button) findViewById(R.id.search_gazet);
+        pub_year = (EditText) findViewById(R.id.pub_year);
+        search_gazet.setOnClickListener(this);
+        ArrayList<String> gazet_mantralagat= databases.getgazetbisayagat();
+
+        Spinner mantralagat_bargikaran = (Spinner) findViewById(R.id.mantralagat_bargikaran);
+       /* ArrayList<String> spinnerData_ntc = new ArrayList<>();
+        spinnerData_ntc.add("भुमि");
+        spinnerData_ntc.add("रक्षा");
+        spinnerData_ntc.add("शिक्षा");
+        spinnerData_ntc.add("अर्थ");*/
+        SpinnerAdapter adapter_ntc = new SpinnerAdapter(this, R.layout.top_off_spinner_layout, gazet_mantralagat);
+        mantralagat_bargikaran.setAdapter(adapter_ntc);
+        mantralagat_bargikaran.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                bargikaran_mantralagat = parent.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                bargikaran_mantralagat = "भुमि";
+
+            }
+        });
+
+        Spinner bisayegat_bargikaran = (Spinner) findViewById(R.id.bisayegat_bargikaran);
+        ArrayList<String> spinnerData_bisayegat_bargikaran = new ArrayList<>();
+        spinnerData_bisayegat_bargikaran.add("नियुक्ति");
+        spinnerData_bisayegat_bargikaran.add("सरूवा");
+        spinnerData_bisayegat_bargikaran.add("बर्खास्त");
+        spinnerData_bisayegat_bargikaran.add("मु.अ. कर छुट");
+        spinnerData_bisayegat_bargikaran.add("भन्सार छुट");
+        SpinnerAdapter adapter_spinnerData_bisayegat_bargikaran = new SpinnerAdapter(this, R.layout.top_off_spinner_layout, spinnerData_bisayegat_bargikaran);
+        bisayegat_bargikaran.setAdapter(adapter_spinnerData_bisayegat_bargikaran);
+        bisayegat_bargikaran.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                bargikaran_bisayegat = parent.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                bargikaran_bisayegat = "नियुक्ति";
+
+            }
+        });
+
+        Spinner sankh_ati = (Spinner) findViewById(R.id.sankh_ati);
+        ArrayList<String> spinnerData_sankh_ati = new ArrayList<>();
+        spinnerData_sankh_ati.add("संख्या");
+        spinnerData_sankh_ati.add("अति");
+        SpinnerAdapter adapter_spinnerData_sankh_ati = new SpinnerAdapter(this, R.layout.top_off_spinner_layout, spinnerData_sankh_ati);
+        sankh_ati.setAdapter(adapter_spinnerData_sankh_ati);
+        sankh_ati.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                atirikta_sankhya = parent.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                atirikta_sankhya = "संख्या";
+
+            }
+        });
+
+        Spinner mahina = (Spinner) findViewById(R.id.mahina);
+        ArrayList<String> spineer_mahina = new ArrayList<>();
+        spineer_mahina.add("बैषाख");
+        spineer_mahina.add("जेष्ठ");
+        spineer_mahina.add("आषाढ");
+        spineer_mahina.add("श्रावण");
+        spineer_mahina.add("भाद्र");
+        spineer_mahina.add("आश्विन");
+        spineer_mahina.add("कार्तिक");
+        spineer_mahina.add("मंसीर");
+        spineer_mahina.add("पौष");
+        spineer_mahina.add("माघ");
+        spineer_mahina.add("फाल्गुण");
+        spineer_mahina.add("चैत्र");
+        SpinnerAdapter adapter_mahina = new SpinnerAdapter(this, R.layout.top_off_spinner_layout, spineer_mahina);
+        mahina.setAdapter(adapter_mahina);
+        mahina.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                month = parent.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                month = "बैषाख";
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.search_gazet:
+                try {
+                    barsa = pub_year.getText().toString();
+                    new CallGazet().execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+
+    public class CallGazet extends AsyncTask<String, String, String> {
+        Progressillrc progressDialog = new Progressillrc(Gazat.this);
+        ArrayList<Gazetmodel> gazetmodels = new ArrayList<>();
+
+        @Override
+        protected String doInBackground(String... strings) {
+            HttpURLConnection conn = null;
+            String gazet = null;
+            HttpUrlConnectionJson httpUrlConnectionJson = new HttpUrlConnectionJson();
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put(Tags.GAZAAT_MANTRALAGAT,bargikaran_mantralagat);
+                jsonObject.put(Tags.GAZAT_BISAYAGAT,bargikaran_bisayegat);
+                jsonObject.put(Tags.GAZAT_SANKHYA,atirikta_sankhya);
+                jsonObject.put(Tags.GAZAT_BARSHA,barsa);
+                jsonObject.put(Tags.GAZAT_MONTH,month);
+                Log.d(Tags.TAG,"json post gazet : " + jsonObject);
+                gazet=httpUrlConnectionJson.sendHTTPData(Constants.GET_GAZET_MAIN,jsonObject);
+                Log.d(Tags.TAG,"json post response gazet : " + gazet);
+               /* String mantralay = URLEncoder.encode(bargikaran_mantralagat, "utf-8");
+                String bisaya = URLEncoder.encode(bargikaran_bisayegat, "utf-8");
+                String sankhya = URLEncoder.encode(atirikta_sankhya, "utf-8");
+                String barsa_search = URLEncoder.encode(barsa, "utf-8");
+                url = "http://legalinfonepal.com:92/api/gadget/Searchgadget/?searchKhand=%20&searchSankhya=" + sankhya + "&searchBhag=%20&searchBargikaran=%20&searchMantralaya=" + mantralay + "&searchBishaya=" + bisaya + "&searchBarema=%20&searchShabda=%20&searchBarsha=" + barsa_search + "&searchMiti=%20";
+                ServiceHandler sh = new ServiceHandler();
+                Log.d("dinesh", url);
+                jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);*/
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return gazet;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            try {
+                progressDialog.hide();
+                progressDialog.dismiss();
+                JSONObject jsonObject_gazet = new JSONObject(s);
+                boolean sucess = jsonObject_gazet.getBoolean("success");
+                if (sucess==true){
+                    JSONArray jsonArray = jsonObject_gazet.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        Gazetmodel najirNepalimodel = new Gazetmodel();
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String barsa = jsonObject.getString("barsha");
+                        String sankhya = jsonObject.getString("sankhya");
+                        String mantralaya = jsonObject.getString("mantralaya");
+                        String bisaya = jsonObject.getString("bishaya");
+                        String barema = jsonObject.getString("barema");
+                        String miti = jsonObject.getString("miti");
+
+                        najirNepalimodel.setId(id);
+                        najirNepalimodel.setBarsha(barsa);
+                        najirNepalimodel.setMantralaya(mantralaya);
+                        najirNepalimodel.setSankhya(sankhya);
+                        najirNepalimodel.setMiti(miti);
+                        najirNepalimodel.setBishaya(bisaya);
+                        najirNepalimodel.setBarema(barema);
+                        gazetmodels.add(najirNepalimodel);
+                    }
+                    if (jsonArray.length() > 0) {
+                        Intent intent = new Intent(Gazat.this, Detailslistgazet.class);
+                        intent.putExtra("mylist", gazetmodels);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(Gazat.this, "No data found", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+
+            } catch (Exception e) {
+
+                progressDialog.dismiss();
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+        }
+    }
+}

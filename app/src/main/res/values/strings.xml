@@ -5,4 +5,8 @@
     <string name="closeDrawer">close</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
+    <string name="kanun">कानून</string>
+    <string name="najir">नजीर</string>
+    <string name="ijlash">इजलास</string>
+    <string name="terms_condition" >I agree to all the <a href='http://qpay.com.np/termsandcondition.html' > Terms and Conditions</a></string>
 </resources>

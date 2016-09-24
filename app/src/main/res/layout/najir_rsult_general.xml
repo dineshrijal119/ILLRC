@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/custum_toolbar_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/view_hide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+        <TextView
+           android:text="बिस्तृत:"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/gazet_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        >
+        <TextView
+            android:textColor="@android:color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="निर्णय नं."
+            />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/month"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="वर्ष" />
+        <TextView
+            android:textColor="@android:color/black"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="महिना" />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/peg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="पेज" />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/supprtdef"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="बिषय" />
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        />
+</LinearLayout>
