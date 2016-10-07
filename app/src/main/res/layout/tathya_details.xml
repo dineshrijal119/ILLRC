@@ -128,7 +128,26 @@
         android:layout_marginBottom="5dp"
         android:id="@+id/related_najir"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_dark"
+            android:text="सम्बन्धित तिपन्नी "
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/related_tipanni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_dark"
+            />
+    </LinearLayout>
 </LinearLayout>
 </ScrollView>

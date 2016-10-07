@@ -61,12 +61,12 @@ public class NajirAdapter extends ArrayAdapter<Najirchoosmodel> {
                                                 @Override
                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                                                    if (isChecked == true) {
+                                                    if (isChecked) {
                                                         choosepackage.insertNajirpublication(user.getName());
-
-                                                        Log.d(Tags.TAG, "positon : " + user.getName());
-                                                    }else if (isChecked == false){
-                                                  choosepackage.deletNajirItem(String.valueOf(position));
+                                                        Log.d(Tags.TAG,"insert position this : " + String.valueOf(position+1));
+                                                    }else {
+                                                  choosepackage.deletNajirItem(String.valueOf(position+1));
+                                                        Log.d(Tags.TAG,"delet position this : " +String.valueOf(position+1));
                                                     }
 
 

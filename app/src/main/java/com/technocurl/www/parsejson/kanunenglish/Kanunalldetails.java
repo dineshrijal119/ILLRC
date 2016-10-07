@@ -1,4 +1,4 @@
-package com.technocurl.www.parsejson.kanun;
+package com.technocurl.www.parsejson.kanunenglish;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -14,20 +14,16 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.technocurl.www.parsejson.HttpUrlConnectionJson;
 import com.technocurl.www.parsejson.R;
 import com.technocurl.www.parsejson.ServiceHandler;
-import com.technocurl.www.parsejson.custumclasses.Progressillrc;
 import com.technocurl.www.parsejson.model.NajirNepalimodel;
-import com.technocurl.www.parsejson.nepali.Detailsrow;
-import com.technocurl.www.parsejson.nepali.NajirrecycleviewAdapter;
 import com.technocurl.www.parsejson.utility.Constants;
-import com.technocurl.www.parsejson.utility.Tags;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,52 +33,56 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 
 /**
- * Created by dinesh on 9/10/16.
+ * Created by dinesh on 9/11/16.
  */
-public class Tathyaserchlist extends AppCompatActivity {
-    RecyclerView recyclerView;
-    Thyadapter kanunlistAdapter;
+public class Kanunalldetails extends AppCompatActivity {
     Toolbar toolbar;
-    Progressillrc progressDialog;
-    ArrayList<Tathya> myList;
-    ArrayList<Tathya> dafatathyas = new ArrayList<>();
+    TextView today,old;
+    int position;
+    ProgressDialog progressDialog;
+    ArrayList<NajirNepalimodel> najirNepalimodels = new ArrayList<>();
+    RecyclerView recyclerView;
+    ReleatednajirAdapter kanunlistAdapter;
+    LinearLayout visibility,show_visibility;
+    TextView details_najir_kanun;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tathya_search_list);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.kanun_all_details);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        setTitle("तथ्थयगत खोज ");
+        setTitle("कानूनको खोज बिस्तृत");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
-       myList = (ArrayList<Tathya>) getIntent().getSerializableExtra("mylist");
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        old=(TextView)findViewById(R.id.old_situation);
+        today=(TextView)findViewById(R.id.today_situation);
+        visibility=(LinearLayout)findViewById(R.id.visibility);
+        show_visibility=(LinearLayout)findViewById(R.id.visibility_show);
+        details_najir_kanun = (TextView)findViewById(R.id.details_najir_kanun);
+        final ArrayList<Kanunimodel> myList = (ArrayList<Kanunimodel>) getIntent().getSerializableExtra("mylist");
+        position = getIntent().getIntExtra("position", 0);
+        today.setText(myList.get(position).getDetailnow());
+        try {
+            old.setText(myList.get(position).getDaphaord());
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
+        new getnearbynajir(myList.get(position).getId()).execute();
+        Log.d("dinesh","Id : "+myList.get(position).getId()+"position : " + position);
+        recyclerView = (RecyclerView) findViewById(R.id.related_najir);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        kanunlistAdapter = new Thyadapter(this, myList);
-        recyclerView.setAdapter(kanunlistAdapter);
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-
-               new getThyadetails(myList.get(position).getName()).execute();
-            }
-            @Override
-            public void onLongClick(View view, int position) {
-
-
-
-            }
-        }));
     }
-    public class getThyadetails extends AsyncTask<String, String, String> {
+
+    public class getnearbynajir extends AsyncTask<String, String, String> {
         String id;
-        public getThyadetails(String id){
+        public getnearbynajir(String id){
             this.id=id;
         }
 
@@ -92,10 +92,10 @@ public class Tathyaserchlist extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject();
             String suchi_list = null;
             try {
-                jsonObject.put("Tathaya", id);
-                Log.d("dinesh", "thya post  : " + jsonObject);
-                suchi_list = httpUrlConnectionJson.sendHTTPData(Constants.TATHYA_CLICK_DAFA, jsonObject);
-                Log.d("dinesh", "thya response : " + suchi_list);
+                jsonObject.put("LawSubGrPId", id);
+                Log.d("dinesh", "law post  : " + jsonObject);
+                suchi_list = httpUrlConnectionJson.sendHTTPData(Constants.GET_NEARBY_NAJIR, jsonObject);
+                Log.d("dinesh", "law response : " + suchi_list);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -106,7 +106,8 @@ public class Tathyaserchlist extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new Progressillrc(Tathyaserchlist.this);
+            progressDialog = new ProgressDialog(Kanunalldetails.this);
+            progressDialog.setMessage("Loading..");
             progressDialog.setCancelable(false);
             progressDialog.show();
         }
@@ -120,49 +121,45 @@ public class Tathyaserchlist extends AppCompatActivity {
                 boolean success = jsonObject.getBoolean("success");
                 if (success == true) {
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
-
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        Tathya tathya  = new Tathya();
+                        NajirNepalimodel najirNepalimodel  = new NajirNepalimodel();
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        JSONArray jsonObject2 = jsonObject1.getJSONArray("Dapha");
-                        JSONObject Tippani = jsonObject1.getJSONObject("Tippani");
-                        String Tipanni_name = Tippani.getString("Name");
-                        tathya.setTippani(Tipanni_name);
-                        Log.d(Tags.TAG,"tipanni : " + Tippani);
-
-                        for (int j = 0 ;j<jsonObject2.length();j++ ){
-                            Log.d(Tags.TAG,"json dafa array : " + jsonObject2);
-                            JSONObject jsonObject3 = jsonObject2.getJSONObject(j);
-                            String SN = jsonObject3.getString("Sn");
-                            String Dapha = jsonObject3.getString("Detailnow");
-                            tathya.setSn(SN);
-                            tathya.setDapha(Dapha);
-                            dafatathyas.add(tathya);
-                        }
-
+                        String SN = jsonObject1.getString("SN");
+                        String Publication = jsonObject1.getString("Publication");
+                        String PageNumber = jsonObject1.getString("PageNumber");
+                        String NirnayeNumber = jsonObject1.getString("NirnayeNumber");
+                        String RegisterId = jsonObject1.getString("RegisterId");
+                        String Adalat = jsonObject1.getString("Adalat");
+                        String Month = jsonObject1.getString("Month");
+                        String Pubyear = jsonObject1.getString("Pubyear");
+                        String CaseType = jsonObject1.getString("CaseType");
+                        String Ijlash = jsonObject1.getString("Ijlash");
+                        String File = jsonObject1.getString("File");
+                        najirNepalimodel.setPubyear(Pubyear);
+                        najirNepalimodel.setSN(SN);
+                        najirNepalimodel.setCaseType(CaseType);
+                        najirNepalimodel.setMonth(Month);
+                        najirNepalimodel.setIjlash(Ijlash);
+                        najirNepalimodel.setFile(File);
+                        najirNepalimodels.add(najirNepalimodel);
                     }
-                    if (dafatathyas.size() > 0){
-                        Intent intent = new Intent(Tathyaserchlist.this,Tathyadetails.class);
-                        intent.putExtra("mylist",dafatathyas);
-                        intent.putExtra("id",id);
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(getApplicationContext(),"No data found",Toast.LENGTH_LONG).show();
-                    }
-/*
-                    kanunlistAdapter = new ReleatednajirAdapter(Tathyaserchlist.this, najirNepalimodels);
+
+                    kanunlistAdapter = new ReleatednajirAdapter(Kanunalldetails.this, najirNepalimodels);
                     recyclerView.setAdapter(kanunlistAdapter);
                     recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
                         @Override
                         public void onClick(View view, int position) {
-                            String sn= najirNepalimodels.get(position).getSN();
-                            new Callreletednajir(sn).execute();
+                                   /* String sn= najirNepalimodels.get(position).getSN();
+                            new Callreletednajir(sn).execute();*/
+                            show_visibility.setVisibility(View.GONE);
+                            visibility.setVisibility(View.VISIBLE);
+                            details_najir_kanun.setText(najirNepalimodels.get(position).getFile());
                         }
                         @Override
                         public void onLongClick(View view, int position) {
 
                         }
-                    }));*/
+                    }));
 
 
                 }
@@ -173,20 +170,63 @@ public class Tathyaserchlist extends AppCompatActivity {
 
         }
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        onBackPressed();
-        return super.onOptionsItemSelected(item);
+
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-//        startActivity(new Intent(Tathyaserchlist.this,KanunnepaliAactivity.class));
+    public interface ClickListener {
+        void onClick(View view, int position);
+
+        void onLongClick(View view, int position);
+    }
+
+    public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
+
+        private GestureDetector gestureDetector;
+        private Kanunalldetails.ClickListener clickListener;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final Kanunalldetails.ClickListener clickListener) {
+            this.clickListener = clickListener;
+            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && clickListener != null) {
+                        clickListener.onLongClick(child, recyclerView.getChildPosition(child));
+                    }
+                }
+            });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
+                clickListener.onClick(child, rv.getChildPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
     }
 
     public class Callreletednajir extends AsyncTask<String, String, String> {
-        ProgressDialog progressDialog = new ProgressDialog(Tathyaserchlist.this);
+        ProgressDialog progressDialog = new ProgressDialog(Kanunalldetails.this);
         String sn;
         public Callreletednajir(String sn){
             this.sn=sn;
@@ -199,7 +239,7 @@ public class Tathyaserchlist extends AppCompatActivity {
             String jsonStr = "";
             try {
                 url = "http://43.245.238.134:105/api/entry/getentry/"+sn;
-                ServiceHandler sh = new ServiceHandler();
+                        ServiceHandler sh = new ServiceHandler();
                 Log.d("dinesh",url);
                 // Making a request to url and getting response
                 jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
@@ -237,7 +277,7 @@ public class Tathyaserchlist extends AppCompatActivity {
                     String File = jsonObject.getString("File");
                     try {
                         if (File.length() > 5){
-                            Intent intent = new Intent(Tathyaserchlist.this,RelatednajirActivity.class);
+                       Intent intent = new Intent(Kanunalldetails.this,RelatednajirActivity.class);
                             intent.putExtra("dt",File);
                             startActivity(intent);
                         }
@@ -263,57 +303,5 @@ public class Tathyaserchlist extends AppCompatActivity {
 
         }
     }
-    private int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
-    }
 
-    public interface ClickListener {
-        void onClick(View view, int position);
-
-        void onLongClick(View view, int position);
-    }
-
-    public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
-
-        private GestureDetector gestureDetector;
-        private Tathyaserchlist.ClickListener clickListener;
-
-        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final Tathyaserchlist.ClickListener clickListener) {
-            this.clickListener = clickListener;
-            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-                @Override
-                public boolean onSingleTapUp(MotionEvent e) {
-                    return true;
-                }
-
-                @Override
-                public void onLongPress(MotionEvent e) {
-                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
-                    if (child != null && clickListener != null) {
-                        clickListener.onLongClick(child, recyclerView.getChildPosition(child));
-                    }
-                }
-            });
-        }
-
-        @Override
-        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            View child = rv.findChildViewUnder(e.getX(), e.getY());
-            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
-                clickListener.onClick(child, rv.getChildPosition(child));
-            }
-            return false;
-        }
-
-        @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-        }
-
-        @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-        }
-    }
 }

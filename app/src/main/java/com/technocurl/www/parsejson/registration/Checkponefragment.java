@@ -202,11 +202,92 @@ public class Checkponefragment extends Fragment implements View.OnClickListener 
                         bundle.putString("phone",phone);
                         registrationfragment.setArguments(bundle);
                         fragmentTransaction.commit();
-
                     }else if (IsRegisteredUser==true){
-                        illrcDatabases.insertInfo(phone,"1","");
+                     JSONObject UserInformation = jsonObject2.getJSONObject("UserInformation");
+                        JSONObject PackageDataInfo = jsonObject2.getJSONObject("PackageDataInfo");
+                        String phone = UserInformation.getString("PhoneNo");
+                        String SecurityCode = UserInformation.getString("SecurityCode");
+
+                        JSONArray Lawgrp = PackageDataInfo.getJSONArray("Lawgrp");
+                        JSONArray Publication = PackageDataInfo.getJSONArray("Publication");
+                        JSONArray Mantralaya = PackageDataInfo.getJSONArray("Mantralaya");
+                        JSONArray Mantralaysub = PackageDataInfo.getJSONArray("Mantralaysub");
+                        JSONArray LawgroupSub = PackageDataInfo.getJSONArray("LawgroupSub");
+                        JSONArray LawgrpEnglish = PackageDataInfo.getJSONArray("LawgrpEnglish");
+                        JSONArray PublicationEnglish = PackageDataInfo.getJSONArray("PublicationEnglish");
+                        JSONArray LawgroupSubEnglish = PackageDataInfo.getJSONArray("LawgroupSubEnglish");
+
+                        Log.d(Tags.TAG,"law english : " + LawgrpEnglish);
+                        Log.d(Tags.TAG,"law publication : " + PublicationEnglish);
+                        Log.d(Tags.TAG,"law english sub : " + LawgroupSubEnglish);
+if (Lawgrp.length() > 0){
+    for (int i=0;i<Lawgrp.length();i++){
+        JSONObject lawgrp = Lawgrp.getJSONObject(i);
+        String Name = lawgrp.getString("Name");
+        illrcDatabases.insertKanun(Name);
+    }
+}
+                        if (LawgrpEnglish.length() > 0){
+
+                            for (int i=0;i<LawgrpEnglish.length();i++){
+                                JSONObject lawgrp = LawgrpEnglish.getJSONObject(i);
+                                String Name = lawgrp.getString("Name");
+                                illrcDatabases.insertKanunenglish(Name);
+                            }
+                        }
+                        if (Publication.length() > 0){
+
+                            for (int i = 0 ; i < Publication.length();i++){
+                                JSONObject pub = Publication.getJSONObject(i);
+                                String Name = pub.getString("Name");
+                                illrcDatabases.insertNajir(Name);
+                            }
+                        }
+                        if (PublicationEnglish.length() > 0){
+
+                            for (int i = 0 ; i < PublicationEnglish.length();i++){
+                                JSONObject pub = PublicationEnglish.getJSONObject(i);
+                                String Name = pub.getString("Name");
+                                illrcDatabases.insertNajirenglish(Name);
+                            }
+                        }
+                   if (Mantralaya.length() >0){
+                       for (int i = 0 ; i <Mantralaya.length();i++){
+                           JSONObject mant = Mantralaya.getJSONObject(i);
+                           String Name = mant.getString("Name");
+                           illrcDatabases.insertgazet(Name);
+                       }
+                   }
+                      if (Mantralaysub.length() >0){
+                          for (int i = 0 ; i<Mantralaysub.length();i++){
+                              JSONObject mansub = Mantralaysub.getJSONObject(i);
+                              String Name = mansub.getString("SubName");
+                              illrcDatabases.insertgazetsub(Name);
+                          }
+                      }
+                        if (LawgroupSub.length()>0){
+                            for (int i = 0 ; i < LawgroupSub.length();i++){
+                                JSONObject kanunsub = LawgroupSub.getJSONObject(i);
+                                String Name = kanunsub.getString("SubName");
+                                illrcDatabases.insertKanunsub(Name);
+
+                            }
+                        }
+                        if (LawgroupSubEnglish.length() >0){
+                            for (int i = 0 ; i < LawgroupSubEnglish.length();i++){
+                                JSONObject kanunsub = LawgroupSubEnglish.getJSONObject(i);
+                                String Name = kanunsub.getString("SubName");
+                                illrcDatabases.insertKanunsubenglish(Name);
+
+                            }
+                        }
+
+
+                        illrcDatabases.insertInfo(phone,"1",SecurityCode);
+                        Log.d(Tags.TAG,"user info : " + UserInformation);
+                        Log.d(Tags.TAG,"package info : " + PackageDataInfo);
                         startActivity(new Intent(getActivity(), MainPage.class));
-                        getActivity().finish();
+
                     }
 
 

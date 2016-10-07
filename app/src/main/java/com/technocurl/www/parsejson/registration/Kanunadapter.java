@@ -60,6 +60,8 @@ public class Kanunadapter extends ArrayAdapter<Kanunichoosemode> {
                                                     if (isChecked == true) {
                                                         choosepackage.insertKanun(getItem(position).getName());
                                                         Log.d(Tags.TAG, "positon : " + position);
+                                                    }else if (isChecked == false){
+                                                        choosepackage.deleKanunIteam(String.valueOf(position+1));
                                                     }
 
                                                 }

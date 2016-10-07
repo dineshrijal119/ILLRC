@@ -31,6 +31,7 @@ import com.technocurl.www.parsejson.databases.IllrcDatabases;
 import com.technocurl.www.parsejson.model.NajirNepalimodel;
 import com.technocurl.www.parsejson.nepali.DetailsrowlistActivity;
 import com.technocurl.www.parsejson.utility.Constants;
+import com.technocurl.www.parsejson.utility.Globalvariable;
 import com.technocurl.www.parsejson.utility.Tags;
 
 import org.json.JSONArray;
@@ -49,6 +50,7 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
     String bargikaran_mantralagat, bargikaran_bisayegat, month, atirikta_sankhya, barsa;
     EditText pub_year;
     IllrcDatabases databases;
+    String phone,security;
 
 
     @Override
@@ -70,14 +72,11 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
         search_gazet = (Button) findViewById(R.id.search_gazet);
         pub_year = (EditText) findViewById(R.id.pub_year);
         search_gazet.setOnClickListener(this);
-        ArrayList<String> gazet_mantralagat= databases.getgazetbisayagat();
-
+        phone=((Globalvariable)this.getApplication()).getCell_phone();
+        security=((Globalvariable)this.getApplication()).getUniqueid();
+        ArrayList<String> gazet_mantralagat= databases.getgazetmantralayagat();
+        ArrayList<String> spinnerData_bisayegat_bargikaran = databases.getgazetbisayagat();
         Spinner mantralagat_bargikaran = (Spinner) findViewById(R.id.mantralagat_bargikaran);
-       /* ArrayList<String> spinnerData_ntc = new ArrayList<>();
-        spinnerData_ntc.add("भुमि");
-        spinnerData_ntc.add("रक्षा");
-        spinnerData_ntc.add("शिक्षा");
-        spinnerData_ntc.add("अर्थ");*/
         SpinnerAdapter adapter_ntc = new SpinnerAdapter(this, R.layout.top_off_spinner_layout, gazet_mantralagat);
         mantralagat_bargikaran.setAdapter(adapter_ntc);
         mantralagat_bargikaran.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -92,14 +91,7 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
 
             }
         });
-
         Spinner bisayegat_bargikaran = (Spinner) findViewById(R.id.bisayegat_bargikaran);
-        ArrayList<String> spinnerData_bisayegat_bargikaran = new ArrayList<>();
-        spinnerData_bisayegat_bargikaran.add("नियुक्ति");
-        spinnerData_bisayegat_bargikaran.add("सरूवा");
-        spinnerData_bisayegat_bargikaran.add("बर्खास्त");
-        spinnerData_bisayegat_bargikaran.add("मु.अ. कर छुट");
-        spinnerData_bisayegat_bargikaran.add("भन्सार छुट");
         SpinnerAdapter adapter_spinnerData_bisayegat_bargikaran = new SpinnerAdapter(this, R.layout.top_off_spinner_layout, spinnerData_bisayegat_bargikaran);
         bisayegat_bargikaran.setAdapter(adapter_spinnerData_bisayegat_bargikaran);
         bisayegat_bargikaran.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -190,6 +182,8 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
             HttpUrlConnectionJson httpUrlConnectionJson = new HttpUrlConnectionJson();
             try {
                 JSONObject jsonObject = new JSONObject();
+                jsonObject.put(Tags.PHONE,phone);
+                jsonObject.put(Tags.SECURITY,security);
                 jsonObject.put(Tags.GAZAAT_MANTRALAGAT,bargikaran_mantralagat);
                 jsonObject.put(Tags.GAZAT_BISAYAGAT,bargikaran_bisayegat);
                 jsonObject.put(Tags.GAZAT_SANKHYA,atirikta_sankhya);
@@ -198,14 +192,6 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
                 Log.d(Tags.TAG,"json post gazet : " + jsonObject);
                 gazet=httpUrlConnectionJson.sendHTTPData(Constants.GET_GAZET_MAIN,jsonObject);
                 Log.d(Tags.TAG,"json post response gazet : " + gazet);
-               /* String mantralay = URLEncoder.encode(bargikaran_mantralagat, "utf-8");
-                String bisaya = URLEncoder.encode(bargikaran_bisayegat, "utf-8");
-                String sankhya = URLEncoder.encode(atirikta_sankhya, "utf-8");
-                String barsa_search = URLEncoder.encode(barsa, "utf-8");
-                url = "http://legalinfonepal.com:92/api/gadget/Searchgadget/?searchKhand=%20&searchSankhya=" + sankhya + "&searchBhag=%20&searchBargikaran=%20&searchMantralaya=" + mantralay + "&searchBishaya=" + bisaya + "&searchBarema=%20&searchShabda=%20&searchBarsha=" + barsa_search + "&searchMiti=%20";
-                ServiceHandler sh = new ServiceHandler();
-                Log.d("dinesh", url);
-                jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);*/
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -221,6 +207,7 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
                 progressDialog.dismiss();
                 JSONObject jsonObject_gazet = new JSONObject(s);
                 boolean sucess = jsonObject_gazet.getBoolean("success");
+                String message = jsonObject_gazet.getString("message");
                 if (sucess==true){
                     JSONArray jsonArray = jsonObject_gazet.getJSONArray("data");
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -248,7 +235,7 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
                         intent.putExtra("mylist", gazetmodels);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(Gazat.this, "No data found", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Gazat.this, message, Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -257,6 +244,7 @@ public class Gazat extends AppCompatActivity implements View.OnClickListener {
 
                 progressDialog.dismiss();
                 e.printStackTrace();
+                Toast.makeText(getApplicationContext(),"No data found please make sure your payment.", Toast.LENGTH_LONG).show();
             }
         }
 

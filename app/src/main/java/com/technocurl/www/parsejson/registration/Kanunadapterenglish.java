@@ -20,11 +20,10 @@ import java.util.ArrayList;
 /**
  * Created by dinesh on 9/17/16.
  */
-public class Gazetadapter extends ArrayAdapter<Gazetchoosemodel> {
+public class Kanunadapterenglish extends ArrayAdapter<Kanunichoosemode> {
     Choosepackage choosepackage;
 
-    public Gazetadapter(Context context, ArrayList<Gazetchoosemodel> users,Choosepackage choosepackage) {
-
+    public Kanunadapterenglish(Context context, ArrayList<Kanunichoosemode> users,Choosepackage choosepackage) {
         super(context, 0, users);
         this.choosepackage=choosepackage;
 
@@ -38,7 +37,7 @@ public class Gazetadapter extends ArrayAdapter<Gazetchoosemodel> {
 
         // Get the data item for this position
 
-        Gazetchoosemodel user = getItem(position);
+        final Kanunichoosemode user = getItem(position);
 
         // Check if an existing view is being reused, otherwise inflate the view
 
@@ -59,10 +58,10 @@ public class Gazetadapter extends ArrayAdapter<Gazetchoosemodel> {
                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                                                     if (isChecked == true) {
-                                                        choosepackage.insertGazet(getItem(position).getName());
+                                                        choosepackage.insertKanunenglish(getItem(position).getName());
                                                         Log.d(Tags.TAG, "positon : " + position);
-                                                    }else if(isChecked==false){
-                                                        choosepackage.deletdGazet(String.valueOf(position+1));
+                                                    }else if (isChecked == false){
+                                                        choosepackage.deleKanunIteamenglish(String.valueOf(position+1));
                                                     }
 
                                                 }

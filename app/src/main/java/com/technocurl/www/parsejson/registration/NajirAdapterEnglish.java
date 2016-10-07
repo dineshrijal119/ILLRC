@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.technocurl.www.parsejson.R;
@@ -20,12 +21,14 @@ import java.util.ArrayList;
 /**
  * Created by dinesh on 9/17/16.
  */
-public class Gazetadapter extends ArrayAdapter<Gazetchoosemodel> {
+public class NajirAdapterEnglish extends ArrayAdapter<Najirchoosmodel> {
     Choosepackage choosepackage;
+    Context context;
 
-    public Gazetadapter(Context context, ArrayList<Gazetchoosemodel> users,Choosepackage choosepackage) {
 
+    public NajirAdapterEnglish(Context context, ArrayList<Najirchoosmodel> users,Choosepackage choosepackage) {
         super(context, 0, users);
+        this.context=context;
         this.choosepackage=choosepackage;
 
     }
@@ -38,7 +41,7 @@ public class Gazetadapter extends ArrayAdapter<Gazetchoosemodel> {
 
         // Get the data item for this position
 
-        Gazetchoosemodel user = getItem(position);
+        final Najirchoosmodel user = getItem(position);
 
         // Check if an existing view is being reused, otherwise inflate the view
 
@@ -58,12 +61,14 @@ public class Gazetadapter extends ArrayAdapter<Gazetchoosemodel> {
                                                 @Override
                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                                                    if (isChecked == true) {
-                                                        choosepackage.insertGazet(getItem(position).getName());
-                                                        Log.d(Tags.TAG, "positon : " + position);
-                                                    }else if(isChecked==false){
-                                                        choosepackage.deletdGazet(String.valueOf(position+1));
+                                                    if (isChecked) {
+                                                        choosepackage.insertNajirpublicationenglish(user.getName());
+                                                        Log.d(Tags.TAG,"insert position this : " + String.valueOf(position+1));
+                                                    }else {
+                                                        choosepackage.deletNajirItemenglish(String.valueOf(position+1));
+                                                        Log.d(Tags.TAG,"delet position this : " +String.valueOf(position+1));
                                                     }
+
 
                                                 }
                                             }

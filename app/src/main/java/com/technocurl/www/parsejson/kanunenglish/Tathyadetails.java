@@ -1,8 +1,7 @@
-package com.technocurl.www.parsejson.kanun;
+package com.technocurl.www.parsejson.kanunenglish;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;

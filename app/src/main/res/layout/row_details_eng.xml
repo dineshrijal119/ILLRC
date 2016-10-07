@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/custum_toolbar_details" />
+    <include layout="@layout/custum_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,17 +21,16 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="बिस्तृत:"
+                    android:text="Details:"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
                 <TextView
-                    android:layout_marginRight="10dp"
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,15 +44,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
-    <Button
-        android:id="@+id/preview"
-        android:layout_weight="1"
-        android:layout_gravity="left"
-        android:background="@color/button_background"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="2dp"
-        android:text="Preview"/>
+                <Button
+                    android:id="@+id/preview"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:background="@color/button_background"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:text="Preview"/>
                 <Button
                     android:layout_marginLeft="2dp"
                     android:background="@color/button_background"

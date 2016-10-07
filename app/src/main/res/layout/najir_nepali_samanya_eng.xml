@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:gravity="center">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="0.6"
+                    android:inputType="textEmailAddress"
+                    android:text=" Publication :"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <!--<EditText
+                    android:id="@+id/publisher"
+                    android:layout_marginLeft="3dp"
+                    android:layout_weight="1.4"
+                    style="@style/EditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp" android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="प्रकाशन"
+                    android:inputType="text" />-->
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1.4"
+                    android:spinnerMode="dropdown"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:gravity="center">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+
+                    android:layout_weight="0.6"
+                    android:inputType="textEmailAddress"
+                    android:text="Court :"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+                <Spinner
+                    android:id="@+id/adalat"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1.4"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:gravity="center">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="0.6"
+                    android:inputType="textEmailAddress"
+                    android:text=" Month :"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+                <Spinner
+                    android:id="@+id/mahina"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1.4"
+                    android:spinnerMode="dropdown"
+
+                    />
+            </LinearLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="0.6"
+                    android:inputType="textEmailAddress"
+                    android:text="Bench :"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+                <Spinner
+                    android:id="@+id/ijlash"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1.4"
+                    android:spinnerMode="dropdown"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Year:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+                <EditText
+                    android:id="@+id/pub_year"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="2021-2080"
+                    android:inputType="text" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Decision noं.:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/nirnayeno"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="ंDecision no"
+                    android:inputType="text" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Peg no:."
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/page"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="1-5000 "
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Subject:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/subject"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="Subect"
+                    android:inputType="text" />
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/search"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textEmailAddress"
+                    android:text="Search"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

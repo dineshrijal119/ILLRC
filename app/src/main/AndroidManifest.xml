@@ -6,6 +6,7 @@
 
 
     <application
+        android:name=".utility.Globalvariable"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,12 +31,7 @@
         <activity
             android:windowSoftInputMode="adjustPan"
             android:name=".nepali.NepaliMain"/>
-        <activity
-            android:windowSoftInputMode="adjustPan"
-            android:name=".english.NajirEnglish"/>
 
-        <activity android:name=".nepali.Detailsrowenglish"/>
-        <activity android:name=".english.DetailsrowActivityenglish"/>
         <activity
             android:label=""
             android:name=".kanun.Kanunsearchlist"/>
@@ -53,6 +49,10 @@
         <activity
             android:label=""
             android:name=".gazat.Detailslistgazet"/>
+        <activity android:name=".najiarenglish.Detailsrowenglish"/>
+        <activity android:name=".najiarenglish.DetailsrowlistActivityenglish"/>
+        <activity android:name=".najiarenglish.EnglishMain"/>
+
     </application>
 
 </manifest>

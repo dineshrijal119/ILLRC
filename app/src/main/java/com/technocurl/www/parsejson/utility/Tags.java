@@ -6,6 +6,7 @@ package com.technocurl.www.parsejson.utility;
 public class Tags {
     public static String TAG="dinesh";
     public static String PHONE="PhoneNo";
+    public static String SECURITY="SecurityCode";
     public static String FIRST_NAME="FirstName";
     public static String LAST_NAME="LastName";
     public static  String ADDRESS="Address";

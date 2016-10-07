@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.technocurl.www.parsejson.utility.Tags;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,9 @@ public class IllrcDatabases extends SQLiteOpenHelper {
     private static final String TABLE_KANUN_BISAYEGAT="kanun_bisayegat";
     private static final String TABLE_GAZET_MANTRALAGAT="gazet_mantralagat";
     private static final String TABLE_GAZET_BISAYGAT="gazet_bisayegat";
-
+    private static final String TABLE_NAJIR_ENGLISH="najirenglish";
+    private static final String TABLE_KANUN_CHETRAGAT_ENGLISH="kanun_chetragat_english";
+    private static final String TABLE_KANUN_BISAYEGAT_ENGLISH="kanun_bisayegat_english";
     //table element info
     private static final String ID="_id";
     private static  final String PHONE="phone";
@@ -48,15 +52,19 @@ public class IllrcDatabases extends SQLiteOpenHelper {
 
     //create table quert
     private static final String CREATE_TABLE_INFO = " create table  " + TABLE_INFO + "(" + ID + " integer primary key, " + PHONE + " text , "  + STATUS + " text , " +  USER + " text " + ")";
-    private static final String CREATE_TABLE_NAJIR = " create table  " + TABLE_NAJIR + "(" + ID + " integer primary key, " +  PUBLICATION + " text " + ")";
+    private static final String CREATE_TABLE_NAJIR = " create table  " + TABLE_NAJIR_ENGLISH + "(" + ID + " integer primary key, " +  PUBLICATION + " text " + ")";
+    private static final String CREATE_TABLE_NAJIR_ENGLISH = " create table  " + TABLE_NAJIR + "(" + ID + " integer primary key, " +  PUBLICATION + " text " + ")";
     private static final String CREATE_TABLE_KANUN_CHETRAGAT_ = " create table  " + TABLE_KANUN_CHETRAGAT + "(" + ID + " integer primary key, " +  CHETRAGAT_BARGIKARAN + " text " + ")";
     private static final String CREATE__KANUN_BISAYEGAT = " create table  " + TABLE_KANUN_BISAYEGAT + "(" + ID + " integer primary key, " +  KANUNI_BARGIKARAN + " text " + ")";
     private static final String CREATE__GAZET_MANTRALAGAT = " create table  " + TABLE_GAZET_MANTRALAGAT + "(" + ID + " integer primary key, " +  GAZET_MANTRALAGAT + " text " + ")";
     private static final String CREATE__GAZET_BISAYGAT = " create table  " + TABLE_GAZET_BISAYGAT + "(" + ID + " integer primary key, " +  GAZET_BISAYAGAT + " text " + ")";
+    private static final String CREATE_TABLE_KANUN_CHETRAGAT_ENGLISH_ = " create table  " + TABLE_KANUN_CHETRAGAT_ENGLISH + "(" + ID + " integer primary key, " +  CHETRAGAT_BARGIKARAN + " text " + ")";
+    private static final String CREATE__KANUN_BISAYEGAT_ENGLISH = " create table  " + TABLE_KANUN_BISAYEGAT_ENGLISH + "(" + ID + " integer primary key, " +  KANUNI_BARGIKARAN + " text " + ")";
+
 
 
     public IllrcDatabases(Context context) {
-        super(context, /*DATABASE_NAME*/"/mnt/sdcard/illrc.db", null, DATABASE_VERSION);
+        super(context, DATABASE_NAME/*"/mnt/sdcard/illrc.db"*/, null, DATABASE_VERSION);
     }
 
     @Override
@@ -67,6 +75,9 @@ public class IllrcDatabases extends SQLiteOpenHelper {
         db.execSQL(CREATE__KANUN_BISAYEGAT);
         db.execSQL(CREATE__GAZET_MANTRALAGAT);
         db.execSQL(CREATE__GAZET_BISAYGAT);
+        db.execSQL(CREATE__KANUN_BISAYEGAT_ENGLISH);
+        db.execSQL(CREATE_TABLE_KANUN_CHETRAGAT_ENGLISH_);
+        db.execSQL(CREATE_TABLE_NAJIR_ENGLISH);
 
         Log.d("info", CREATE_TABLE_INFO);
         Log.d("najir", CREATE_TABLE_NAJIR);
@@ -85,13 +96,109 @@ public class IllrcDatabases extends SQLiteOpenHelper {
         db.execSQL("DROP IF EXISTS " + TABLE_KANUN_BISAYEGAT);
         db.execSQL("DROP IF EXISTS " + TABLE_KANUN_CHETRAGAT);
         db.execSQL("DROP IF EXISTS " + TABLE_NAJIR);
+        db.execSQL("DROP IF EXISTS " + TABLE_KANUN_BISAYEGAT_ENGLISH);
+        db.execSQL("DROP IF EXISTS " + TABLE_KANUN_CHETRAGAT_ENGLISH);
+        db.execSQL("DROP IF EXISTS " + TABLE_NAJIR_ENGLISH);
 
     }
     public void deletNajirItem(String id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.execSQL("delet from najir where _id = " + id );
+        sqLiteDatabase.execSQL("delete from najir where _id = '" + id + "'");
+    }
+    public void deletNajirItemenglish(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from najirenglish where _id = '" + id + "'");
+    }
+    public void deletKanunItem(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from kanun_chetragat where _id = '" + id + "'");
+//        sqLiteDatabase.execSQL(" delete from kanun_chetragat where _id = " + id );
 
     }
+    public void deletKanunItemenglish(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from kanun_chetragat_english where _id = '" + id + "'");
+//        sqLiteDatabase.execSQL(" delete from kanun_chetragat where _id = " + id );
+
+    }
+    public void deletGazetItem(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from gazet_mantralagat where _id = '" + id + "'");
+//        sqLiteDatabase.execSQL(" delete from gazet_mantralagat where _id = " + id );
+
+    }
+
+    public ArrayList<String> getkanunbisayagat(){
+        ArrayList<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT bisayagat_kanun FROM " + TABLE_KANUN_BISAYEGAT;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(cursor.getColumnIndexOrThrow("bisayagat_kanun")));
+            } while (cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning lables
+        return labels;
+    }
+    public ArrayList<String> getkanunbisayagatenglish(){
+        ArrayList<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT bisayagat_kanun FROM " + TABLE_KANUN_BISAYEGAT_ENGLISH;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(cursor.getColumnIndexOrThrow("bisayagat_kanun")));
+            } while (cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning lables
+        return labels;
+    }
+
+    public ArrayList<String> getgazetbisayagat(){
+        ArrayList<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT bisayagat_gazet FROM " + TABLE_GAZET_BISAYGAT;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(cursor.getColumnIndexOrThrow("bisayagat_gazet")));
+            } while (cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning lables
+        return labels;
+    }
+
 
     public long insertNajir(String no) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -100,12 +207,42 @@ public class IllrcDatabases extends SQLiteOpenHelper {
         return sqLiteDatabase.insert(TABLE_NAJIR, null, contentValues);
     }
 
-
+    public long insertNajirenglish(String no) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PUBLICATION, no);
+        return sqLiteDatabase.insert(TABLE_NAJIR_ENGLISH, null, contentValues);
+    }
     public long insertKanun(String no) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(CHETRAGAT_BARGIKARAN, no);
         return sqLiteDatabase.insert(TABLE_KANUN_CHETRAGAT, null, contentValues);
+    }
+    public long insertKanunenglish(String no) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CHETRAGAT_BARGIKARAN, no);
+        return sqLiteDatabase.insert(TABLE_KANUN_CHETRAGAT_ENGLISH, null, contentValues);
+    }
+    public long insertKanunsubenglish(String no) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KANUNI_BARGIKARAN, no);
+        return sqLiteDatabase.insert(TABLE_KANUN_BISAYEGAT_ENGLISH, null, contentValues);
+    }
+
+    public long insertKanunsub(String no) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KANUNI_BARGIKARAN, no);
+        return sqLiteDatabase.insert(TABLE_KANUN_BISAYEGAT, null, contentValues);
+    }
+    public long insertgazetsub(String no) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(GAZET_BISAYAGAT, no);
+        return sqLiteDatabase.insert(TABLE_GAZET_BISAYGAT, null, contentValues);
     }
     public long insertgazet(String no) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -123,6 +260,22 @@ public class IllrcDatabases extends SQLiteOpenHelper {
         contentValues.put(USER, code);
         return sqLiteDatabase.insert(TABLE_INFO, null, contentValues);
     }
+    public String getcellPhone(){
+        String img= null;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String selectquery= "select phone from info " ;
+        Cursor cursor = sqLiteDatabase.rawQuery(selectquery,null);
+        if (cursor != null && cursor.getCount() > 0){
+            cursor.moveToPosition(0);
+            do {
+                img=cursor.getString(cursor.getColumnIndex("phone"));
+            }while (cursor.moveToNext());
+
+        }
+        return img;
+    }
+
+
     public String getStatus(){
         String img= null;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
@@ -180,6 +333,9 @@ public class IllrcDatabases extends SQLiteOpenHelper {
         return img;
     }
 
+
+
+
     public ArrayList<String> getnajirPublication(){
         ArrayList<String> labels = new ArrayList<String>();
 
@@ -196,6 +352,48 @@ public class IllrcDatabases extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
+        db.close();
+
+        return labels;
+    }
+    public ArrayList<String> getnajirPublicationenglish(){
+        ArrayList<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT publication FROM " + TABLE_NAJIR_ENGLISH;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(cursor.getColumnIndexOrThrow("publication")));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return labels;
+    }
+    public ArrayList<String> getkanunchetragatenglish(){
+        ArrayList<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT chetragat_kanun FROM " + TABLE_KANUN_CHETRAGAT_ENGLISH;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(cursor.getColumnIndexOrThrow("chetragat_kanun")));
+            } while (cursor.moveToNext());
+        }
+
         // closing connection
         cursor.close();
         db.close();
@@ -203,6 +401,7 @@ public class IllrcDatabases extends SQLiteOpenHelper {
         // returning lables
         return labels;
     }
+
     public ArrayList<String> getkanunchetragat(){
         ArrayList<String> labels = new ArrayList<String>();
 
@@ -242,7 +441,7 @@ public class IllrcDatabases extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<String> getgazetbisayagat(){
+    public ArrayList<String> getgazetmantralayagat(){
         ArrayList<String> labels = new ArrayList<String>();
 
         // Select All Query

@@ -20,8 +20,10 @@ import com.technocurl.www.parsejson.R;
 import com.technocurl.www.parsejson.ServiceHandler;
 import com.technocurl.www.parsejson.SpinnerAdapter;
 import com.technocurl.www.parsejson.custumclasses.Progressillrc;
+import com.technocurl.www.parsejson.databases.IllrcDatabases;
 import com.technocurl.www.parsejson.model.NajirNepalimodel;
 import com.technocurl.www.parsejson.utility.Constants;
+import com.technocurl.www.parsejson.utility.Globalvariable;
 import com.technocurl.www.parsejson.utility.Tags;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,6 +41,8 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
 
     EditText page_get,subject_get,pache_bipache_get,kanunbebasahi_get,sabdha_get,public_year,judge_get;
     int check=0;
+    String phone,security;
+    IllrcDatabases illrcDatabases;
 
 
     @Nullable
@@ -50,6 +54,7 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         Button button = (Button) view.findViewById(R.id.search);
         button.setOnClickListener(this);
         public_year=(EditText)view.findViewById(R.id.pub_year);
@@ -59,16 +64,13 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
         kanunbebasahi_get=(EditText)view.findViewById(R.id.kanunbebasahi);
         sabdha_get=(EditText)view.findViewById(R.id.sabdha);
         judge_get=(EditText)view.findViewById(R.id.neyadhis);
+        phone=((Globalvariable)getActivity().getApplication()).getCell_phone();
+        security=((Globalvariable)getActivity().getApplication()).getUniqueid();
 
-
-
-
+        ArrayList<String> lables = illrcDatabases.getnajirPublication();
         Spinner spinner_ntc = (Spinner) view.findViewById(R.id.spinner);
-        ArrayList<String> spinnerData_ntc = new ArrayList<>();
-        spinnerData_ntc.add("नेकाप");
-        spinnerData_ntc.add("बुलेटिन");
-        spinnerData_ntc.add("अन्य");
-        SpinnerAdapter adapter_ntc = new SpinnerAdapter(getActivity(), R.layout.top_off_spinner_layout, spinnerData_ntc);
+
+        SpinnerAdapter adapter_ntc = new SpinnerAdapter(getActivity(), R.layout.top_off_spinner_layout, lables);
         spinner_ntc.setAdapter(adapter_ntc);
         spinner_ntc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -125,10 +127,9 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
         mahina.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                check=check+1;
-                if(check>0){
+
                     month = parent.getSelectedItem().toString();
-                }
+
 
             }
 
@@ -163,6 +164,8 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        illrcDatabases = new IllrcDatabases(getActivity());
+        illrcDatabases.getReadableDatabase();
     }
     @Override
     public void onClick(View view) {
@@ -194,6 +197,8 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
             JSONObject jsonObject = new JSONObject();
 
             try {
+                jsonObject.put(Tags.PHONE,phone);
+                jsonObject.put(Tags.SECURITY,security);
                 jsonObject.put(Tags.PUBLICATION,publication);
                 jsonObject.put(Tags.ADALAT,adalat);
                 jsonObject.put(Tags.MONTH,month);
@@ -223,6 +228,7 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
                 progressDialog.dismiss();
                 JSONObject jsonObject_first = new JSONObject(s);
                 boolean success = jsonObject_first.getBoolean("success");
+                String message = jsonObject_first.getString("message");
                 if (success==true) {
                     JSONArray jsonArray = jsonObject_first.getJSONArray("data");
               /*  }
@@ -256,7 +262,7 @@ public class NajirNepaliBistrti extends Fragment implements View.OnClickListener
                         intent.putExtra("sabdha",sabdha);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(getActivity(), "No data found", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
                     }
                 }
 /*

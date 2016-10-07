@@ -1,4 +1,4 @@
-package com.technocurl.www.parsejson.kanun;
+package com.technocurl.www.parsejson.kanunenglish;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -24,8 +24,6 @@ import com.technocurl.www.parsejson.R;
 import com.technocurl.www.parsejson.ServiceHandler;
 import com.technocurl.www.parsejson.custumclasses.Progressillrc;
 import com.technocurl.www.parsejson.model.NajirNepalimodel;
-import com.technocurl.www.parsejson.nepali.Detailsrow;
-import com.technocurl.www.parsejson.nepali.NajirrecycleviewAdapter;
 import com.technocurl.www.parsejson.utility.Constants;
 import com.technocurl.www.parsejson.utility.Tags;
 

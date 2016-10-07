@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -41,6 +42,7 @@ public class Registrationfragment extends Fragment implements View.OnClickListen
     String phone;
     Progressillrc progressDialog;
     ImageView logo;
+    String  uniqueid;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class Registrationfragment extends Fragment implements View.OnClickListen
                 .endConfig()
                 .buildRound("ILIRC", Color.parseColor("#FF013E3D"));
         logo.setImageDrawable(drawable);
+        uniqueid = Settings.Secure.getString(getContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
     }
 
     @Override
@@ -113,6 +117,7 @@ public class Registrationfragment extends Fragment implements View.OnClickListen
             String check_phone = "";
             try {
                 JSONObject jsonObject = new JSONObject();
+                jsonObject.put(Tags.SECURITY,uniqueid);
                 jsonObject.put(Tags.PHONE, phone);
                 jsonObject.put(Tags.FIRST_NAME, firstname);
                 jsonObject.put(Tags.LAST_NAME, lastname);

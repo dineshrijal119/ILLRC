@@ -1,13 +1,11 @@
-package com.technocurl.www.parsejson.kanun;
+package com.technocurl.www.parsejson.kanunenglish;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -23,7 +21,6 @@ import com.technocurl.www.parsejson.R;
 import com.technocurl.www.parsejson.SpinnerAdapter;
 import com.technocurl.www.parsejson.custumclasses.Progressillrc;
 import com.technocurl.www.parsejson.databases.IllrcDatabases;
-import com.technocurl.www.parsejson.nepali.DetailsrowlistActivity;
 import com.technocurl.www.parsejson.utility.Constants;
 import com.technocurl.www.parsejson.utility.Globalvariable;
 import com.technocurl.www.parsejson.utility.Tags;

@@ -1,4 +1,4 @@
-package com.technocurl.www.parsejson.kanun;
+package com.technocurl.www.parsejson.kanunenglish;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

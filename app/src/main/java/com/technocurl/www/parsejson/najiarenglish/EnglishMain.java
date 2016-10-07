@@ -1,4 +1,4 @@
-package com.technocurl.www.parsejson.english;
+package com.technocurl.www.parsejson.najiarenglish;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,24 +18,24 @@ import com.technocurl.www.parsejson.R;
 /**
  * Created by dinesh on 8/16/16.
  */
-public class NajirEnglish extends AppCompatActivity {
+public class EnglishMain extends AppCompatActivity {
     Toolbar toolbar;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_nepali);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("नजीर (English)");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NajirEnglish.this, MainPage.class));
+                startActivity(new Intent(EnglishMain.this, MainPage.class));
                 finish();
             }
         });
-        setTitle("नजीर(English)");
         TabLayout tabLayout =(TabLayout)findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab());
         tabLayout.addTab(tabLayout.newTab());
@@ -74,7 +74,7 @@ public class NajirEnglish extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab());
         tabLayout.addTab(tabLayout.newTab());
         final ViewPager viewPager = (ViewPager)view.findViewById(R.id.viewpager);
-        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount()));
+        viewPager.setAdapter(new PagerAdapter(getFragmentManager(),tabLayout.getTabCount()));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
@@ -110,7 +110,7 @@ public class NajirEnglish extends AppCompatActivity {
     public class  PagerAdapter extends FragmentStatePagerAdapter {
 
         int nNumberTabs;
-        private String tabTitles[] = new String[]{"General Search", "Specific Search"};
+        private String tabTitles[] = new String[]{"Simple Search","Details Search"};
 
         public PagerAdapter(FragmentManager fm, int nNumberTabs) {
             super(fm);
@@ -124,10 +124,12 @@ public class NajirEnglish extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new NajirEnglishGeneral();
+                    return  new NajirEnglishSamanya();
+
 
                 case 1:
-                    return  new NajirEnglishGeneral();
+
+                    return new NajirEnglishBistrti();
 
                 default:
                     return null;

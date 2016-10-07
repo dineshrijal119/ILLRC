@@ -12,9 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
-import com.technocurl.www.parsejson.english.NajirEnglishGeneral;
-
-import mehdi.sakout.aboutpage.AboutPage;
 
 /**
  * Created by dinesh on 8/10/16.

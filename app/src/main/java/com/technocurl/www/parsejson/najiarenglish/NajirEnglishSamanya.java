@@ -1,4 +1,4 @@
-package com.technocurl.www.parsejson.nepali;
+package com.technocurl.www.parsejson.najiarenglish;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
 /**
  * Created by deadlydragger on 7/9/16.
  */
-public class NajirNepaliSamanya extends Fragment implements View.OnClickListener {
+public class NajirEnglishSamanya extends Fragment implements View.OnClickListener {
     Toolbar toolbar;
     String selectedItem;
     public static final int CONNECTION_TIMEOUT = 10000;
@@ -53,7 +53,7 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.najir_nepali_samanya, container, false);
+        return inflater.inflate(R.layout.najir_nepali_samanya_eng, container, false);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
         phone = ((Globalvariable) getActivity().getApplication()).getCell_phone();
         security = ((Globalvariable) getActivity().getApplication()).getUniqueid();
         // Spinner Drop down elements
-        ArrayList<String> lables = illrcDatabases.getnajirPublication();
+        ArrayList<String> lables = illrcDatabases.getnajirPublicationenglish();
 
 
         Spinner spinner_ntc = (Spinner) view.findViewById(R.id.spinner);
@@ -84,15 +84,15 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                publication = "नेकाप";
+                publication = "Nekapa";
 
             }
         });
         Spinner adalat_main = (Spinner) view.findViewById(R.id.adalat);
         ArrayList<String> spineer_adalat = new ArrayList<>();
-        spineer_adalat.add("सर्वोच्च");
-        spineer_adalat.add("पुनराबेदन");
-        spineer_adalat.add("जिल्ला");
+        spineer_adalat.add("Suprim");
+        spineer_adalat.add("Apelleate");
+        spineer_adalat.add("District");
 
 
         SpinnerAdapter adapter_adalat = new SpinnerAdapter(getActivity(), R.layout.top_off_spinner_layout, spineer_adalat);
@@ -105,7 +105,7 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                adalat = "सर्वोच्च";
+                adalat = "Suprim";
 
             }
         });
@@ -113,18 +113,18 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
 
         Spinner mahina = (Spinner) view.findViewById(R.id.mahina);
         ArrayList<String> spineer_mahina = new ArrayList<>();
-        spineer_mahina.add("बैषाख");
-        spineer_mahina.add("जेष्ठ");
-        spineer_mahina.add("आषाढ");
-        spineer_mahina.add("श्रावण");
-        spineer_mahina.add("भाद्र");
-        spineer_mahina.add("आश्विन");
-        spineer_mahina.add("कार्तिक");
-        spineer_mahina.add("मंसीर");
-        spineer_mahina.add("पौष");
-        spineer_mahina.add("माघ");
-        spineer_mahina.add("फाल्गुण");
-        spineer_mahina.add("चैत्र");
+        spineer_mahina.add("Baishak");
+        spineer_mahina.add("Jestha");
+        spineer_mahina.add("Aashad");
+        spineer_mahina.add("Shwran");
+        spineer_mahina.add("Bhadra");
+        spineer_mahina.add("Aswin");
+        spineer_mahina.add("Kartik");
+        spineer_mahina.add("Mansir");
+        spineer_mahina.add("Push");
+        spineer_mahina.add("Magh");
+        spineer_mahina.add("Falgun");
+        spineer_mahina.add("Chaitra");
         SpinnerAdapter adapter_mahina = new SpinnerAdapter(getActivity(), R.layout.top_off_spinner_layout, spineer_mahina);
         mahina.setAdapter(adapter_mahina);
         mahina.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -142,10 +142,10 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
 
         Spinner ijlash_main = (Spinner) view.findViewById(R.id.ijlash);
         ArrayList<String> spineer_ijlash = new ArrayList<>();
-        spineer_ijlash.add("संयुक्त इजलास");
-        spineer_ijlash.add("पूर्ण इजलास ");
-        spineer_ijlash.add("विशेष इजलास");
-        spineer_ijlash.add("एकल इजलास");
+        spineer_ijlash.add("Joint Bench");
+        spineer_ijlash.add("Complete Bench ");
+        spineer_ijlash.add("Special Bench");
+        spineer_ijlash.add("Single Bench");
 
         SpinnerAdapter adapter_ijlash = new SpinnerAdapter(getActivity(), R.layout.top_off_spinner_layout, spineer_ijlash);
         ijlash_main.setAdapter(adapter_ijlash);
@@ -153,9 +153,7 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    ijlash = parent.getSelectedItem().toString().replaceAll("ु","ू");
-
-                Log.d(Tags.TAG,"check key : "+ ijlash);
+                ijlash = parent.getSelectedItem().toString();
 
 
             }
@@ -220,7 +218,7 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
                 jsonObject.put(Tags.KANUNBEBASAHI, "");
 
                 Log.d(Tags.TAG, "najir post : " + jsonObject);
-                najir = httpUrlConnectionJson.sendHTTPData(Constants.GET_NAJIR_MAIN, jsonObject);
+                najir = httpUrlConnectionJson.sendHTTPData(Constants.NAJIR_ENGLISH, jsonObject);
                 Log.d(Tags.TAG, "najir response : " + najir);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -263,7 +261,7 @@ public class NajirNepaliSamanya extends Fragment implements View.OnClickListener
                         najirNepalimodels.add(najirNepalimodel);
                     }
                     if (jsonArray.length() > 0) {
-                        Intent intent = new Intent(getActivity(), DetailsrowlistActivity.class);
+                        Intent intent = new Intent(getActivity(), DetailsrowlistActivityenglish.class);
                         intent.putExtra("mylist", najirNepalimodels);
                         intent.putExtra("sabdha", sabdhaanusar);
                         startActivity(intent);

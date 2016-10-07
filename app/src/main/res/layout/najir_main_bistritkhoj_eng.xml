@@ -20,16 +20,15 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
-
                 android:gravity="center">
 
                 <TextView
-                    android:textAlignment="center"
+
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_weight="0.6"
                     android:inputType="textEmailAddress"
-                    android:text=" प्रकाशन :"
+                    android:text=" Publication :"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
 
@@ -63,14 +62,13 @@
                 android:weightSum="2"
                 android:gravity="center">
                 <TextView
-                    android:textAlignment="center"
                     android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
 
                     android:layout_weight="0.6"
                     android:inputType="textEmailAddress"
-                    android:text="अदालत :"
+                    android:text="Court :"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
                 <Spinner
@@ -83,6 +81,7 @@
                     android:layout_weight="1.4"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
@@ -91,13 +90,12 @@
                 android:weightSum="2"
                 android:gravity="center">
                 <TextView
-                    android:textAlignment="center"
                     android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_weight="0.6"
                     android:inputType="textEmailAddress"
-                    android:text=" महिना :"
+                    android:text=" Month :"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
                 <Spinner
@@ -114,6 +112,10 @@
             </LinearLayout>
 
 
+
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
@@ -123,13 +125,12 @@
                 android:gravity="center">
 
                 <TextView
-                    android:textAlignment="center"
                     android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_weight="0.6"
                     android:inputType="textEmailAddress"
-                    android:text="इजलास :"
+                    android:text="Bench :"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
                 <Spinner
@@ -142,10 +143,8 @@
                     android:layout_weight="1.4"
                     android:spinnerMode="dropdown"
 
-
                     />
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -153,212 +152,25 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 android:gravity="center">
+
                 <TextView
-                    android:textAlignment="center"
+                    android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_weight="1"
                     android:inputType="textEmailAddress"
-                    android:text="वर्ष:"
+                    android:text="Year:"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
-
                 <EditText
                     android:id="@+id/pub_year"
                     style="@style/EditTextStyle"
                     android:layout_width="250dp"
                     android:layout_height="42dp"
-                    android:layout_marginLeft="3dp"
                     android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="२०२१ - २०८० "
-                    android:inputType="text" />
-              <!--  <Spinner
-
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_weight="1.4"
-                    android:spinnerMode="dropdown"
-
-                    />-->
-            </LinearLayout>
-
-
-           <!-- <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_weight="0.6"
-                    android:inputType="textEmailAddress"
-                    android:text="बर्गिकरण:"
-                    android:textColor="@android:color/black"
-                    android:textSize="14dp" />
-
-                <Spinner
-                    android:id="@+id/categorry"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_weight="1.4"
-                    android:spinnerMode="dropdown"
-
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_weight="0.6"
-                    android:inputType="textEmailAddress"
-                    android:text="शब्द अनुसार:"
-                    android:textColor="@android:color/black"
-                    android:textSize="14dp" />
-
-                <Spinner
-                    android:id="@+id/sabdhaanusar"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_weight="1.4"
-                    android:spinnerMode="dropdown"
-
-                    />
-            </LinearLayout>-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_weight="1"
-                    android:inputType="textEmailAddress"
-                    android:text="पेज  नं."
-                    android:textColor="@android:color/black"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/page"
-                    style="@style/EditTextStyle"
-                    android:layout_width="250dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="१-५०००० "
+                    android:hint="2021-2080"
                     android:inputType="text" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:gravity="center"
-                >
-
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_weight="1"
-                    android:inputType="textEmailAddress"
-                    android:text="बिषय:"
-                    android:textColor="@android:color/black"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/subject"
-                    style="@style/EditTextStyle"
-                    android:layout_width="250dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="बिषय"
-                    android:inputType="text" />
-            </LinearLayout>
-
-          <!--  <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_weight="1"
-                    android:inputType="textEmailAddress"
-                    android:text="शब्ध: "
-                    android:textColor="@android:color/black"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/sabdha"
-                    style="@style/EditTextStyle"
-                    android:layout_width="250dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="शब्ध"
-                    android:inputType="text" />
-            </LinearLayout>-->
-
-            <!--   <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="42dp"
-                   android:layout_margin="10dp"
-                   android:orientation="horizontal">
-
-                   <TextView
-                       android:textAlignment="center"
-                       android:layout_width="0dp"
-                       android:layout_height="42dp"
-                       android:layout_weight="1"
-                       android:inputType="textEmailAddress"
-                       android:text="दर्ता न. :"
-                       android:textColor="@android:color/black"
-                       android:textSize="14dp" />
-
-                   <EditText
-                       style="@style/EditTextStyle"
-                       android:layout_width="250dp"
-                       android:layout_height="42dp"
-                       android:layout_marginLeft="3dp"
-                       android:background="@drawable/edittext_bottom_curv_gray"
-                       android:hint="दर्ता न."
-                       android:inputType="text" />
-               </LinearLayout>-->
-<!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
@@ -366,67 +178,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_weight="1"
                     android:inputType="textEmailAddress"
-                    android:text="पक्ष/बिपक्ष:"
-                    android:textColor="@android:color/black"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/pache_bipache"
-                    style="@style/EditTextStyle"
-                    android:layout_width="250dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="पक्ष/बिपक्ष"
-                    android:inputType="text" />
-            </LinearLayout>-->
-
-            <!--  <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="42dp"
-                  android:layout_margin="10dp"
-                  android:orientation="horizontal"
-                  android:weightSum="2">
-
-                  <TextView
-                      android:layout_width="0dp"
-                      android:layout_height="42dp"
-                      android:layout_weight="0.6"
-                      android:inputType="textEmailAddress"
-                      android:text="पक्ष/बिपक्ष:"
-                      android:textColor="@android:color/black"
-                      android:textSize="18dp" />
-
-                  <EditText
-                      style="@style/EditTextStyle"
-                      android:layout_width="0dp"
-                      android:layout_height="42dp"
-                      android:layout_marginLeft="3dp"
-                      android:layout_weight="1.4"
-                      android:background="@drawable/edittext_bottom_curv_gray"
-                      android:hint="पक्ष/बिपक्ष"
-                      android:inputType="text" />
-              </LinearLayout>-->
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_weight="1"
-                    android:inputType="textEmailAddress"
-                    android:text="निर्णय नं.:"
+                    android:text="Decision noं.:"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
 
@@ -437,49 +193,157 @@
                     android:layout_height="42dp"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="निर्णय नं."
+                    android:hint="ंDecision no"
+                    android:inputType="text" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Peg no:."
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/page"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="1-5000 "
                     android:inputType="text" />
             </LinearLayout>
 
-            <!--<LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Subject:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/subject"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="Subect"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Words: "
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/sabdha"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="Words"
+                    android:inputType="text" />
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_weight="1"
                     android:inputType="textEmailAddress"
-                    android:text="निर्णय मिति:"
+                    android:text="Plaintif/Defandent:"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
 
                 <EditText
+                    android:id="@+id/pache_bipache"
                     style="@style/EditTextStyle"
                     android:layout_width="250dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="निर्णय मिति"
-                    android:inputType="textPassword" />
-            </LinearLayout>-->
+                    android:hint="Plaintif/Defandent"
+                    android:inputType="text" />
+            </LinearLayout>
 
-           <!-- <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textAlignment="center"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_weight="1"
                     android:inputType="textEmailAddress"
-                    android:text="न्य़ाधिश  "
+                    android:text="Judge: "
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/neyadhis"
+                    style="@style/EditTextStyle"
+                    android:layout_width="250dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/edittext_bottom_curv_gray"
+                    android:hint="Judge"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:inputType="textEmailAddress"
+                    android:text="Lawyerीी: "
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
 
@@ -490,9 +354,9 @@
                     android:layout_height="42dp"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/edittext_bottom_curv_gray"
-                    android:hint="न्य़ाधिशी"
+                    android:hint="Lawyerी"
                     android:inputType="text" />
-            </LinearLayout>-->
+            </LinearLayout>
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -508,17 +372,15 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="textEmailAddress"
-                    android:text="खोज"
                     android:background="@android:color/transparent"
+                    android:inputType="textEmailAddress"
+                    android:text="Search"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="18dp" />
 
             </LinearLayout>
-
-            </LinearLayout>
-
+        </LinearLayout>
 
     </ScrollView>
 

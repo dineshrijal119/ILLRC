@@ -72,6 +72,12 @@ public class Kanunalldetails extends AppCompatActivity {
         final ArrayList<Kanunimodel> myList = (ArrayList<Kanunimodel>) getIntent().getSerializableExtra("mylist");
         position = getIntent().getIntExtra("position", 0);
         today.setText(myList.get(position).getDetailnow());
+        try {
+            old.setText(myList.get(position).getDaphaord());
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
         new getnearbynajir(myList.get(position).getId()).execute();
         Log.d("dinesh","Id : "+myList.get(position).getId()+"position : " + position);
         recyclerView = (RecyclerView) findViewById(R.id.related_najir);
@@ -130,7 +136,7 @@ public class Kanunalldetails extends AppCompatActivity {
                         String Adalat = jsonObject1.getString("Adalat");
                         String Month = jsonObject1.getString("Month");
                         String Pubyear = jsonObject1.getString("Pubyear");
-                        String CaseType = jsonObject1.getString("CaseType");
+                        String CaseType = jsonObject1.getString("SubjectCaseType");
                         String Ijlash = jsonObject1.getString("Ijlash");
                         String File = jsonObject1.getString("File");
                         najirNepalimodel.setPubyear(Pubyear);
